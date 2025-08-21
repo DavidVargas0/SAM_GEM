@@ -11,25 +11,45 @@
     <FileVersion>1.0.%2a</FileVersion>
 	  <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	  <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+	  <Configurations>Debug;Release;RH7;RH8</Configurations>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>..\..\build\</OutputPath>
     <DocumentationFile>..\..\build\SAM.Analytical.GEM.xml</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RH7|AnyCPU'">
+    <OutputPath>..\..\build\</OutputPath>
+    <DocumentationFile>..\..\build\Rhino 7\SAM.Analytical.GEM.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RH8|AnyCPU'">
+    <OutputPath>..\..\build\</OutputPath>
+    <DocumentationFile>..\..\build\Rhino 8\SAM.Analytical.GEM.xml</DocumentationFile>
+  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>..\..\build\</OutputPath>
   </PropertyGroup>
-  <ItemGroup>
+  <ItemGroup Condition="'$(Configuration)|$(Platform)'=='RH7|AnyCPU'">
     <Reference Include="SAM.Analytical">
-      <HintPath>..\..\..\SAM\build\SAM.Analytical.dll</HintPath>
+      <HintPath>..\..\..\SAM\build\Rhino 7\SAM.Analytical.dll</HintPath>
     </Reference>
     <Reference Include="SAM.Core">
-      <HintPath>..\..\..\SAM\build\SAM.Core.dll</HintPath>
+      <HintPath>..\..\..\SAM\build\Rhino 7\SAM.Core.dll</HintPath>
     </Reference>
     <Reference Include="SAM.Geometry">
-      <HintPath>..\..\..\SAM\build\SAM.Geometry.dll</HintPath>
+      <HintPath>..\..\..\SAM\build\Rhino 7\SAM.Geometry.dll</HintPath>
     </Reference>
   </ItemGroup>
+	<ItemGroup Condition="'$(Configuration)|$(Platform)'=='RH8|AnyCPU'">
+		<Reference Include="SAM.Analytical">
+			<HintPath>..\..\..\SAM\build\Rhino 8\SAM.Analytical.dll</HintPath>
+		</Reference>
+		<Reference Include="SAM.Core">
+			<HintPath>..\..\..\SAM\build\Rhino 8\SAM.Core.dll</HintPath>
+		</Reference>
+		<Reference Include="SAM.Geometry">
+			<HintPath>..\..\..\SAM\build\Rhino 8\SAM.Geometry.dll</HintPath>
+		</Reference>
+	</ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SAM.Core.GEM\SAM.Core.GEM.csproj" />
     <ProjectReference Include="..\SAM.Geometry.GEM\SAM.Geometry.GEM.csproj" />
