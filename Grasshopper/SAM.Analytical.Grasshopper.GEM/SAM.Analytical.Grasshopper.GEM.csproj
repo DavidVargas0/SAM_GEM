@@ -13,12 +13,21 @@
 	  <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	  <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 	  <Deterministic>false</Deterministic>
+	  <Configurations>Debug;Release;RH7;RH8</Configurations>
   </PropertyGroup>
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <IsWebBootstrapper>false</IsWebBootstrapper>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <OutputPath>..\..\build\</OutputPath>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RH7|AnyCPU'">
+    <OutputPath>..\..\build\</OutputPath>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RH8|AnyCPU'">
     <OutputPath>..\..\build\</OutputPath>
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
@@ -39,42 +48,102 @@
     <None Remove="Modify\**" />
     <None Remove="Query\**" />
   </ItemGroup>
-  <ItemGroup>
+	<ItemGroup Condition="'$(Configuration)|$(Platform)' == 'RH8|AnyCPU'">
+		<Reference Include="SAM.Analytical, Version=1.0.7481.16628, Culture=neutral, processorArchitecture=MSIL">
+			<SpecificVersion>False</SpecificVersion>
+			<HintPath>..\..\..\SAM\build\Rhino 8\SAM.Analytical.dll</HintPath>
+		</Reference>
+		<Reference Include="SAM.Analytical.Grasshopper">
+			<HintPath>..\..\..\SAM\build\Rhino 8\SAM.Analytical.Grasshopper.dll</HintPath>
+		</Reference>
+		<Reference Include="SAM.Core, Version=1.0.7481.16627, Culture=neutral, processorArchitecture=MSIL">
+			<SpecificVersion>False</SpecificVersion>
+			<HintPath>..\..\..\SAM\build\Rhino 8\SAM.Core.dll</HintPath>
+		</Reference>
+		<Reference Include="SAM.Core.Grasshopper">
+			<HintPath>..\..\..\SAM\build\Rhino 8\SAM.Core.Grasshopper.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\SAM_GEM\SAM.Analytical.GEM\SAM.Analytical.GEM.csproj" />
+	</ItemGroup> 
+  <ItemGroup Condition="'$(Configuration)|$(Platform)' == 'RH7|AnyCPU'">
     <Reference Include="SAM.Analytical, Version=1.0.7481.16628, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\SAM\build\SAM.Analytical.dll</HintPath>
+      <HintPath>..\..\..\SAM\build\Rhino 7\SAM.Analytical.dll</HintPath>
     </Reference>
     <Reference Include="SAM.Analytical.Grasshopper">
-      <HintPath>..\..\..\SAM\build\SAM.Analytical.Grasshopper.dll</HintPath>
+      <HintPath>..\..\..\SAM\build\Rhino 7\SAM.Analytical.Grasshopper.dll</HintPath>
     </Reference>
     <Reference Include="SAM.Core, Version=1.0.7481.16627, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\SAM\build\SAM.Core.dll</HintPath>
+      <HintPath>..\..\..\SAM\build\Rhino 7\SAM.Core.dll</HintPath>
     </Reference>
     <Reference Include="SAM.Core.Grasshopper">
-      <HintPath>..\..\..\SAM\build\SAM.Core.Grasshopper.dll</HintPath>
+      <HintPath>..\..\..\SAM\build\Rhino 7\SAM.Core.Grasshopper.dll</HintPath>
     </Reference>
   </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\SAM_GEM\SAM.Analytical.GEM\SAM.Analytical.GEM.csproj" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(Configuration)|$(Platform)' == 'RH8|AnyCPU'">
+		<PackageReference Include="Grasshopper">
+			<Version>8.10.24228.13001</Version>
+			<ExcludeAssets>runtime</ExcludeAssets>
+		</PackageReference>
+	</ItemGroup>
+	<ItemGroup Condition="'$(Configuration)|$(Platform)' == 'RH7|AnyCPU'">
+		<PackageReference Include="Grasshopper">
+			<Version>7.37.24107.15001</Version>
+			<ExcludeAssets>runtime</ExcludeAssets>
+		</PackageReference>
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+		<PackageReference Include="Newtonsoft.Json">
+			<Version>13.0.3</Version>
+		</PackageReference>
+	</ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\SAM_GEM\SAM.Analytical.GEM\SAM.Analytical.GEM.csproj" />
   </ItemGroup>
-  <ItemGroup>
+  <ItemGroup Condition="'$(Configuration)|$(Platform)' == 'RH8|AnyCPU'">
     <PackageReference Include="Grasshopper">
-      <Version>8.21.25188.17001</Version>
+      <Version>8.10.24228.13001</Version>
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="Newtonsoft.Json">
-      <Version>13.0.3</Version>
-    </PackageReference>
   </ItemGroup>
-  <PropertyGroup />
+	<ItemGroup Condition="'$(Configuration)|$(Platform)' == 'RH7|AnyCPU'">
+		<PackageReference Include="Grasshopper">
+			<Version>7.37.24107.15001</Version>
+			<ExcludeAssets>runtime</ExcludeAssets>
+		</PackageReference>
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+		<PackageReference Include="Newtonsoft.Json">
+			<Version>13.0.3</Version>
+		</PackageReference>
+	</ItemGroup>
+  <PropertyGroup/>
   <PropertyGroup>
     <FallbackCulture>en-US</FallbackCulture>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <StartProgram>C:\Program Files\Rhino 8\System\Rhino.exe</StartProgram>
     <StartArguments></StartArguments>
+    <StartAction>Program</StartAction>
+    <DocumentationFile>..\..\build\SAM.Analytical.Grasshopper.GEM.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RH7|AnyCPU'">
+    <StartProgram>C:\Program Files\Rhino 7\System\Rhino.exe</StartProgram>
+    <StartArguments />
+    <StartAction>Program</StartAction>
+    <DocumentationFile>..\..\build\SAM.Analytical.Grasshopper.GEM.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RH8|AnyCPU'">
+    <StartProgram>C:\Program Files\Rhino 8\System\Rhino.exe</StartProgram>
+    <StartArguments />
     <StartAction>Program</StartAction>
     <DocumentationFile>..\..\build\SAM.Analytical.Grasshopper.GEM.xml</DocumentationFile>
   </PropertyGroup>

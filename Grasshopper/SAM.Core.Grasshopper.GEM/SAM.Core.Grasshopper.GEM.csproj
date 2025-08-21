@@ -13,6 +13,7 @@
 	  <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	  <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 	  <Deterministic>false</Deterministic>
+	  <Configurations>Debug;Release;RH7;RH8</Configurations>
   </PropertyGroup>
   <PropertyGroup>
     <OutputType>Library</OutputType>
@@ -22,19 +23,35 @@
     <OutputPath>..\..\build\</OutputPath>
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RH7|AnyCPU'">
+    <OutputPath>..\..\build\Rhino 7\</OutputPath>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RH8|AnyCPU'">
+    <OutputPath>..\..\build\Rhino 8\</OutputPath>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>..\..\build\</OutputPath>
   </PropertyGroup>
-  <ItemGroup>
+  <ItemGroup Condition="'$(Configuration)|$(Platform)'=='RH7|AnyCPU'">
     <PackageReference Include="Grasshopper">
-      <Version>8.21.25188.17001</Version>
+      <Version>7.37.24107.15001</Version>
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="Newtonsoft.Json">
-      <Version>13.0.3</Version>
-    </PackageReference>
   </ItemGroup>
+	<ItemGroup Condition="'$(Configuration)|$(Platform)'=='RH8|AnyCPU'">
+		<PackageReference Include="Grasshopper">
+			<Version>8.10.24228.13001</Version>
+			<ExcludeAssets>runtime</ExcludeAssets>
+		</PackageReference>
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+		<PackageReference Include="Newtonsoft.Json">
+			<Version>13.0.3</Version>
+		</PackageReference>
+	</ItemGroup>
   <PropertyGroup />
   <PropertyGroup>
     <FallbackCulture>en-US</FallbackCulture>
@@ -42,6 +59,18 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <StartProgram>C:\Program Files\Rhino 8\System\Rhino.exe</StartProgram>
     <StartArguments></StartArguments>
+    <StartAction>Program</StartAction>
+    <DocumentationFile>..\..\build\SAM.Core.Grasshopper.GEM.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RH7|AnyCPU'">
+    <StartProgram>C:\Program Files\Rhino 7\System\Rhino.exe</StartProgram>
+    <StartArguments />
+    <StartAction>Program</StartAction>
+    <DocumentationFile>..\..\build\SAM.Core.Grasshopper.GEM.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RH8|AnyCPU'">
+    <StartProgram>C:\Program Files\Rhino 8\System\Rhino.exe</StartProgram>
+    <StartArguments />
     <StartAction>Program</StartAction>
     <DocumentationFile>..\..\build\SAM.Core.Grasshopper.GEM.xml</DocumentationFile>
   </PropertyGroup>
