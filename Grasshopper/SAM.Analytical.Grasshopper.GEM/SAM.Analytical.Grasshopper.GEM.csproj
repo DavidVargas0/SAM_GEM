@@ -24,11 +24,11 @@
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RH7|AnyCPU'">
-    <OutputPath>..\..\build\</OutputPath>
+    <OutputPath>..\..\build\Rhino 7\</OutputPath>
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RH8|AnyCPU'">
-    <OutputPath>..\..\build\</OutputPath>
+    <OutputPath>..\..\build\Rhino 8\</OutputPath>
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -63,6 +63,9 @@
 		<Reference Include="SAM.Core.Grasshopper">
 			<HintPath>..\..\..\SAM\build\Rhino 8\SAM.Core.Grasshopper.dll</HintPath>
 		</Reference>
+	</ItemGroup>
+	<ItemGroup>
+	  <Compile Remove="Component\SAMAnalyticalToGEM.cs" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\SAM_GEM\SAM.Analytical.GEM\SAM.Analytical.GEM.csproj" />
@@ -125,7 +128,10 @@
 			<Version>13.0.3</Version>
 		</PackageReference>
 	</ItemGroup>
-  <PropertyGroup/>
+	<ItemGroup>
+	  <Folder Include="Component\" />
+	</ItemGroup>
+  <PropertyGroup />
   <PropertyGroup>
     <FallbackCulture>en-US</FallbackCulture>
   </PropertyGroup>
