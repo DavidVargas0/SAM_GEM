@@ -13,21 +13,11 @@
 	  <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 	  <Configurations>Debug;Release;RH7;RH8</Configurations>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  <PropertyGroup >
     <OutputPath>..\..\build\</OutputPath>
     <DocumentationFile>..\..\build\SAM.Core.GEM.xml</DocumentationFile>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RH7|AnyCPU'">
-    <OutputPath>..\..\build\</OutputPath>
-    <DocumentationFile>..\..\build\Rhino 7\SAM.Core.GEM.xml</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RH8|AnyCPU'">
-    <OutputPath>..\..\build\</OutputPath>
-    <DocumentationFile>..\..\build\Rhino 8\SAM.Core.GEM.xml</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>..\..\build\</OutputPath>
-  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
