@@ -14,23 +14,23 @@ namespace SAM.Analytical.Grasshopper.GEM
             }
         }
 
-        public override Bitmap Icon
-        {
-            get
-            {
-                //Return a 24x24 pixel bitmap to represent this GHA library.
-                return Properties.Resources.SAM_Small; ;
-            }
-        }
+        //public override Bitmap Icon
+        //{
+        //    get
+        //    {
+        //        //Return a 24x24 pixel bitmap to represent this GHA library.
+        //        return Properties.Resources.SAM_Small; ;
+        //    }
+        //}
 
-        public override Bitmap AssemblyIcon
-        {
-            get
-            {
-                //Return a 24x24 pixel bitmap to represent this GHA library.
-                return Properties.Resources.SAM_Small; ;
-            }
-        }
+        //public override Bitmap AssemblyIcon
+        //{
+        //    get
+        //    {
+        //        //Return a 24x24 pixel bitmap to represent this GHA library.
+        //        return Properties.Resources.SAM_Small; ;
+        //    }
+        //}
 
         public override string Description
         {

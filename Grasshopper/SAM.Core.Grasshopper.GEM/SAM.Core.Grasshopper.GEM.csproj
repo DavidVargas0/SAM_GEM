@@ -1,20 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-	  <TargetFramework>net8.0-windows</TargetFramework>
-	  <RhinoDefaultInstallDir>$([MSBuild]::GetRegistryValueFromView('HKEY_LOCAL_MACHINE\SOFTWARE\McNeel\Rhinoceros\8.0\Install', 'Path', null, RegistryView.Registry64))</RhinoDefaultInstallDir>
-	  <RhinoDebugInstallDir>$([MSBuild]::GetRegistryValueFromView('HKEY_CURRENT_USER\Software\McNeel\Rhinoceros\8.0-WIP-Developer-Debug-trunk\Install', 'Path', null, RegistryView.Registry64))</RhinoDebugInstallDir>
-	  <RhinoInstallDir>$([MSBuild]::ValueOrDefault('$(RhinoDebugInstallDir)', '$(RhinoDefaultInstallDir)'))</RhinoInstallDir>
-	  <RhinoDefaultPluginsDir>$([MSBuild]::GetRegistryValueFromView('HKEY_LOCAL_MACHINE\SOFTWARE\McNeel\Rhinoceros\8.0\Install', 'Default Plug-ins Folder', null, RegistryView.Registry64))</RhinoDefaultPluginsDir>
-	  <RhinoDebugPluginsDir>$([MSBuild]::GetRegistryValueFromView('HKEY_CURRENT_USER\Software\McNeel\Rhinoceros\8.0-WIP-Developer-Debug-trunk\Install', 'Default Plug-ins Folder', null, RegistryView.Registry64))</RhinoDebugPluginsDir>
-	  <RhinoPluginsDir>$([MSBuild]::ValueOrDefault('$(RhinoDebugPluginsDir)', '$(RhinoDefaultPluginsDir)'))</RhinoPluginsDir>
-	  <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-	  <UseWindowsForms>true</UseWindowsForms>
-    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
-	  <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-	  <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-	  <Deterministic>false</Deterministic>
-	  <Configurations>Debug;Release;RH7;RH8</Configurations>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<OutputType>Library</OutputType>
+		<Deterministic>false</Deterministic>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+		<NoWarn>NU1605</NoWarn>
+		<Configurations>Debug;Release;RH7;RH8</Configurations>
+	</PropertyGroup>
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -47,10 +40,17 @@
 		</PackageReference>
 	</ItemGroup>
 	<ItemGroup>
+	  <Compile Remove="Kernel\AssemblyInfo.cs" />
+	  <Compile Remove="Properties\AssemblyInfo.cs" />
+	</ItemGroup>
+	<ItemGroup>
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 		<PackageReference Include="Newtonsoft.Json">
 			<Version>13.0.3</Version>
 		</PackageReference>
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Kernel\" />
 	</ItemGroup>
   <PropertyGroup />
   <PropertyGroup>
